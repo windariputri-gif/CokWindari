@@ -1,0 +1,304 @@
+:root {
+    --primary: #ff6b6b;
+    --secondary: #e84393;
+    --accent: #8e44ad;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f0c29;
+    overflow-x: hidden;
+}
+
+/* Dynamic Background Animation */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e, #6e355b);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card Wrapper */
+.card-container {
+    padding: 2rem;
+    perspective: 1200px;
+    width: 100%;
+    max-width: 480px;
+    z-index: 1;
+}
+
+/* The Frosted Glass Card */
+.profile-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--card-shadow);
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Premium Glowing Photo Frame */
+.photo-frame {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    padding: 6px; /* Space for the gradient border */
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3, #8e44ad);
+    background-size: 300% 300%;
+    animation: frameGradient 4s ease infinite;
+    box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes frameGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #1c153b; /* Matches the dark background vibe */
+    transition: transform 0.5s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Typography Enhancements */
+.name {
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+    background: linear-gradient(to right, #ffffff, #ffd3b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.bio {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.bio p {
+    margin-bottom: 0.6rem;
+}
+
+/* Education Timeline Theme */
+.education {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.edu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.edu-item i {
+    color: #feca57;
+    font-size: 1.2rem;
+}
+
+.edu-arrow {
+    margin: 0.8rem 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    animation: bounceDown 2s infinite ease-in-out;
+}
+
+@keyframes bounceDown {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(6px); }
+    60% { transform: translateY(3px); }
+}
+
+.edu-item.future {
+    color: #ff9ff3;
+}
+
+.edu-item.future i {
+    color: #ff9ff3;
+}
+
+/* Interest Badges with Glass Effects */
+.interests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2.2rem;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px) scale(1.03);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.badge i {
+    color: #ffd3b6;
+}
+
+/* Social Buttons specific sizing & hover states */
+.social-links {
+    display: flex;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+}
+
+/* Instagram Gradient Button */
+.social-btn.ig {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
+}
+
+/* TikTok Solid Button */
+.social-btn.tiktok {
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.social-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-btn:hover::after {
+    opacity: 1;
+}
+
+.social-btn:hover {
+    transform: translateY(-5px);
+}
+
+.social-btn.ig:hover {
+    box-shadow: 0 8px 25px rgba(220, 39, 67, 0.6);
+}
+
+.social-btn.tiktok:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .social-links {
+        flex-direction: column;
+    }
+    .profile-card {
+        padding: 2.5rem 1.5rem;
+    }
+    .name {
+        font-size: 2rem;
+    }
+}
